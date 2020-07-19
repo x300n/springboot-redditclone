@@ -4,6 +4,7 @@ package org.ahmedgaber.Redditclone.controller;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.ahmedgaber.Redditclone.dto.SubredditDto;
+import org.ahmedgaber.Redditclone.exceptions.SpringRedditException;
 import org.ahmedgaber.Redditclone.service.SubredditService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -29,5 +30,10 @@ public class SubredditController {
         return ResponseEntity
                 .status(HttpStatus.OK)
                 .body(subredditService.getAll());
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<SubredditDto> getSubreddit(@PathVariable Long id) throws SpringRedditException {
+        return ResponseEntity.status(HttpStatus.OK).body(subredditService.getSubreddit(id));
     }
 }

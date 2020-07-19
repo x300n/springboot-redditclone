@@ -3,6 +3,7 @@ package org.ahmedgaber.Redditclone.service;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.ahmedgaber.Redditclone.dto.SubredditDto;
+import org.ahmedgaber.Redditclone.exceptions.SpringRedditException;
 import org.ahmedgaber.Redditclone.mapper.SubredditMapper;
 import org.ahmedgaber.Redditclone.model.Subreddit;
 import org.ahmedgaber.Redditclone.repository.SubredditRepository;
@@ -36,4 +37,11 @@ public class SubredditService {
                 .collect(toList());
     }
 
+    public SubredditDto getSubreddit(Long id) throws SpringRedditException {
+
+        Subreddit subreddit = subredditRepository.findById(id).orElseThrow(() -> new SpringRedditException("No subreddit found with id - " + id));
+
+        return subredditMapper.mapSubredditToDto(subreddit);
+
+    }
 }
