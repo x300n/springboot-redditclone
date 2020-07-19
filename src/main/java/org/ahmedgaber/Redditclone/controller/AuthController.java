@@ -1,8 +1,9 @@
 package org.ahmedgaber.Redditclone.controller;
 
 import lombok.AllArgsConstructor;
-import org.ahmedgaber.Redditclone.dao.LoginRequest;
-import org.ahmedgaber.Redditclone.dao.RegisterRequest;
+import org.ahmedgaber.Redditclone.dto.AuthenticationResponse;
+import org.ahmedgaber.Redditclone.dto.LoginRequest;
+import org.ahmedgaber.Redditclone.dto.RegisterRequest;
 import org.ahmedgaber.Redditclone.exceptions.SpringRedditException;
 import org.ahmedgaber.Redditclone.service.AuthService;
 import org.springframework.http.HttpStatus;
@@ -31,8 +32,10 @@ public class AuthController {
 
 
     @PostMapping("/login")
-    public void login(@RequestBody LoginRequest loginRequest) {
-        authService.login(loginRequest);
+    public AuthenticationResponse login(@RequestBody LoginRequest loginRequest) throws SpringRedditException {
+        return authService.login(loginRequest);
     }
+
+
 }
 

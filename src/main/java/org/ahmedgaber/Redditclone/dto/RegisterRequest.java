@@ -1,4 +1,4 @@
-package org.ahmedgaber.Redditclone.dao;
+package org.ahmedgaber.Redditclone.dto;
 
 
 import lombok.AllArgsConstructor;
@@ -8,8 +8,11 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class LoginRequest {
+public class RegisterRequest {
+    private String email;
 
     private String username;
+
     private String password;
+
 }
