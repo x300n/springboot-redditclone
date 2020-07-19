@@ -43,7 +43,6 @@ public class CommentService {
         String message = mailContentBuilder.build(post.getUser().getUsername() + " posted a comment on your post." + POST_URL);
         sendCommentNotification(message, post.getUser());
 
-
     }
 
     private void sendCommentNotification(String message, User user) throws SpringRedditException {
